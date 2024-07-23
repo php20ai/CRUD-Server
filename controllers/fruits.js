@@ -43,18 +43,22 @@ const create = async (req, res) => {
      if (name) {
      console.log(name)
      const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
-     if (fruit){
+     if (fruit && fruit.name.toLowerCase()!==""){
         res.status(409).send({error:"The fruit deos exist"})
      } else {
+        if (!fruit && fruit.name.toLowerCase()!==""){
        
         //1. Call method from mode
         const newFruit = await Fruit.create(data)
         //2. Send response to status code with new element
         res.status(201).send(newFruit) // 201 is for successfull creation of data in database,
         // 200 is for successfully getting data from database.
+        }
 
      }
-    }
+    } else {
+        res.status(409).send("Sorry invalid input ")
+     }
     
       
 
