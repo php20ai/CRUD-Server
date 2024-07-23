@@ -18,13 +18,15 @@ const show = async (req, res) => {
     // Check if fruits exists in the fruits.json file, if fruits does exist then send the fruit data to client, if fruit does not exist send 404 not found message to client
     // 
   
-  
+      
       const name = req.params["name"].toLowerCase()
+      console.log(name)
   
      
   
      try {
         const fruit = await Fruit.show(name)
+        console.log(fruit)
         res.status(200).send(fruit)
      
      } catch (err) {

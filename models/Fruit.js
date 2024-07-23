@@ -29,7 +29,7 @@ class Fruit {
   
       }
      
-    show(name) {  
+    static show(name) {  
        const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
        if (fruit) {
           return new Fruit(fruit) // 
