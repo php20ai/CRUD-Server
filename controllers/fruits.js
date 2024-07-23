@@ -40,6 +40,7 @@ const show = async (req, res) => {
 const create = async (req, res) => {
      const data = req.body;
      const name = req.params["name"]
+     console.log(name)
      const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
      if (fruit){
         res.status(409).send({error:"The fruit deos exist"})
