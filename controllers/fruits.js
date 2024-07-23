@@ -40,6 +40,7 @@ const show = async (req, res) => {
 const create = async (req, res) => {
      const data = req.body;
      const name = data.name
+     if (name) {
      console.log(name)
      const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
      if (fruit){
@@ -53,6 +54,7 @@ const create = async (req, res) => {
         // 200 is for successfully getting data from database.
 
      }
+    }
     
       
 
