@@ -39,12 +39,11 @@ const show = async (req, res) => {
 
 const create = async (req, res) => {
      const data = req.body;
-     const name = req.params["name"]
+     const name = data.name
      console.log(name)
      const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
      if (fruit){
         res.status(409).send({error:"The fruit deos exist"})
-        
      } else {
        
         //1. Call method from mode
