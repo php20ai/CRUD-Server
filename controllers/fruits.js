@@ -1,4 +1,5 @@
 const Fruit = require('../models/Fruit')
+const fruits = require('../fruit.json')
 
 const index = async (req, res) => {
     try {
@@ -38,20 +39,28 @@ const show = async (req, res) => {
 
 const create = async (req, res) => {
      const data = req.body;
-    try{
-        //1. Call method from model
+     const name = req.params["name"]
+     const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name)
+     if (fruit){
+        res.status(409).send({error:"The fruit deos exist"})
+        
+     } else {
+       
+        //1. Call method from mode
         const newFruit = await Fruit.create(data)
-        //2. Send response to status codewith new element
-        res.status(201).send(newFruit) // 201 is for successfull creation of data in database, 200 is for successfully getting data from database.
-    }catch(err){
+        //2. Send response to status code with new element
+        res.status(201).send(newFruit) // 201 is for successfull creation of data in database,
+        // 200 is for successfully getting data from database.
 
-        res.status(409).send({error:err})
+     }
+    
+      
 
 
 
     }
 
-}
+
 
 const update = async (req, res) => {
     const data = req.body
