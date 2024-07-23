@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const fruitRouter = require('./routes/fruitRouter')
  // contains object containing information about fruits
 
@@ -7,6 +8,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 // converts body of HTTp request to json
+// CORS
+//Front end runs on different port to backend
+//NEED to enable VCORSE to allow information to send from backend ti 
+app.use(cors()) 
 app.use('/fruits', express.json())
 app.use('/fruits', fruitRouter)
 
